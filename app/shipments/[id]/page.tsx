@@ -30,8 +30,8 @@ export default function ShipmentDetailPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="flex flex-col gap-6 lg:col-span-2">
           <ShipmentOverview shipment={shipment} />
-          <OrderDetails shipment={shipment} />
           <ShipmentTimeline shipment={shipment} />
+          <OrderDetails shipment={shipment} />
         </div>
         <div className="flex flex-col gap-6">
           <ShipmentEmails shipment={shipment} />
