@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import { useAppStore } from "@/lib/store";
 import { isActiveShipment, isArrived } from "@/lib/rules";
 import { KpiBand } from "@/components/kpi-band";
-import { TodayDigest } from "@/components/today-digest";
 import { NeedsAttention } from "@/components/needs-attention";
 import { ShipmentsTable } from "@/components/shipments-table";
 import { Ltr } from "@/components/ltr";
@@ -13,7 +12,6 @@ import { Ship, Landmark } from "lucide-react";
 
 export default function DashboardPage() {
   const shipments = useAppStore((s) => s.shipments);
-  const emails = useAppStore((s) => s.emails);
   const [filter, setFilter] = useState<string | null>(null);
 
   // Every count here is its own independent filter() over the exact same
@@ -76,8 +74,6 @@ export default function DashboardPage() {
       </div>
 
       <KpiBand shipments={shipments} activeFilter={filter} onFilterChange={setFilter} />
-
-      <TodayDigest shipments={shipments} emails={emails} />
 
       <NeedsAttention shipments={shipments} />
 
