@@ -197,7 +197,7 @@ export function ShipmentsTable({
                   <td className="px-4 py-3.5">
                     <LifecycleBadge shipment={s} />
                   </td>
-                  <td className="px-4 py-3.5">
+                  <td className="px-4 py-3.5 whitespace-nowrap">
                     <div className="flex items-center gap-1.5">
                       <button
                         onClick={() => setQuickViewId(s.id)}
@@ -207,7 +207,7 @@ export function ShipmentsTable({
                         <Eye className="size-3.5" />
                       </button>
                       <Link href={`/shipments/${s.id}`} className="font-semibold text-cyan transition-colors hover:text-foreground hover:underline">
-                        <Ltr>{s.poNumber}</Ltr>
+                        <Ltr className="whitespace-nowrap">{s.poNumber}</Ltr>
                       </Link>
                     </div>
                   </td>
