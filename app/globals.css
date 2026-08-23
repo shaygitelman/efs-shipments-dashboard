@@ -1,0 +1,374 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-heebo), "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-attention: var(--attention);
+  --color-attention-foreground: var(--attention-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-teal: var(--teal);
+  --color-cyan: var(--cyan);
+  --color-header-from: var(--header-from);
+  --color-header-via: var(--header-via);
+  --color-header-to: var(--header-to);
+  --color-header-foreground: var(--header-foreground);
+  --color-header-foreground-muted: var(--header-foreground-muted);
+  --color-header-border: var(--header-border);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * "Modern logistics platform" — a light, calm, professional palette.
+ * Soft off-white surfaces are the base; a single muted teal is the accent
+ * hue (used for both "primary" and "cyan" so nothing competes with it).
+ * Status colors follow Tailwind's own 600/700 pairs, chosen specifically
+ * because they're proven to read clearly as text on light, low-opacity
+ * tints without needing extra contrast tuning. Glow/neon effects are
+ * deliberately minimal here — elevation comes from soft shadows and clean
+ * borders instead, so the interface reads as calm rather than dramatic.
+ */
+:root {
+  --background: #f6f8fb;
+  --foreground: #1e2a3a;
+  --card: #ffffff;
+  --card-foreground: #1e2a3a;
+  --popover: #ffffff;
+  --popover-foreground: #1e2a3a;
+  --surface: #eef2f7;
+  --surface-foreground: #1e2a3a;
+
+  /* One calm teal drives every accent — buttons, links, active states,
+     lifecycle badges. Deep enough for AA contrast as text/icons on white. */
+  --primary: #0f766e;
+  --primary-foreground: #ffffff;
+
+  --header-from: #10293a;
+  --header-via: #143847;
+  --header-to: #17414b;
+  --header-foreground: #f4f8fa;
+  --header-foreground-muted: #a9c1c9;
+  --header-border: color-mix(in oklab, #ffffff 10%, transparent);
+
+  --secondary: #eef2f7;
+  --secondary-foreground: #1e2a3a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #e6eef2;
+  --accent-foreground: #1e2a3a;
+
+  /* Tailwind's 600 (icons/solid accents) and 700 (text on a light X/10-15
+     tint of the same hue) pairs — both chosen for legibility on white,
+     the opposite calibration from a dark theme's lighter-tint approach. */
+  --destructive: #dc2626;
+  --destructive-foreground: #b91c1c;
+  --warning: #d97706;
+  --warning-foreground: #b45309;
+  --attention: #ea580c;
+  --attention-foreground: #c2410c;
+  --success: #16a34a;
+  --success-foreground: #15803d;
+  --info: #0284c7;
+  --info-foreground: #0369a1;
+
+  --teal: #0d9488;
+  --cyan: #0f766e;
+
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #0f766e;
+
+  --chart-1: #0f766e;
+  --chart-2: #0d9488;
+  --chart-3: #d97706;
+  --chart-4: #16a34a;
+  --chart-5: #dc2626;
+
+  --radius: 0.7rem;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1e2a3a;
+  --sidebar-primary: #0f766e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eef2f7;
+  --sidebar-accent-foreground: #1e2a3a;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #0f766e;
+}
+
+/*
+ * Dark mode — a soft "dusk" slate/navy, not near-black. Three clearly
+ * stepped tiers carry the whole layout: page background < card < row/
+ * secondary, each one deliberate notch lighter so elevation reads without
+ * needing heavy borders or shadows. One restrained teal accent (kept
+ * deliberately muted, not neon), and status colors softened/lightened just
+ * enough to stay comfortably AA-readable without glowing. --header-* is
+ * intentionally NOT overridden here — the header bar was already a
+ * deliberate dark navy band in the light theme (darker than this lighter
+ * dark-mode body), so it now reads as a stable anchor between both themes.
+ */
+.dark {
+  --background: #1b2530;
+  --foreground: #e8edf2;
+  --card: #232f3b;
+  --card-foreground: #e8edf2;
+  --popover: #232f3b;
+  --popover-foreground: #e8edf2;
+  --surface: #202b36;
+  --surface-foreground: #e8edf2;
+
+  --primary: #35b3a3;
+  --primary-foreground: #07231f;
+
+  --secondary: #293845;
+  --secondary-foreground: #e8edf2;
+  --muted: #26333f;
+  --muted-foreground: #a8b8c6;
+  --accent: #2c3b48;
+  --accent-foreground: #e8edf2;
+
+  /* Softened from the previous pass — same hues, a touch less saturated so
+     they sit calmly on the now-lighter surfaces instead of glowing. The
+     base and -foreground variants are kept close together since components
+     use either one interchangeably as "text on a low-opacity tint of the
+     same hue". */
+  --destructive: #e08088;
+  --destructive-foreground: #e08088;
+  --warning: #dcab68;
+  --warning-foreground: #dcab68;
+  --attention: #de9a6c;
+  --attention-foreground: #de9a6c;
+  --success: #67c496;
+  --success-foreground: #67c496;
+  --info: #79b9df;
+  --info-foreground: #79b9df;
+
+  --teal: #35b3a3;
+  --cyan: #35b3a3;
+
+  --border: #3c4c5a;
+  --input: #3c4c5a;
+  --ring: #35b3a3;
+
+  --chart-1: #35b3a3;
+  --chart-2: #79b9df;
+  --chart-3: #dcab68;
+  --chart-4: #67c496;
+  --chart-5: #e08088;
+
+  --sidebar: #232f3b;
+  --sidebar-foreground: #e8edf2;
+  --sidebar-primary: #35b3a3;
+  --sidebar-primary-foreground: #07231f;
+  --sidebar-accent: #293845;
+  --sidebar-accent-foreground: #e8edf2;
+  --sidebar-border: #3c4c5a;
+  --sidebar-ring: #35b3a3;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  /* Numeric/Latin content (PO numbers, dates, containers) embedded in RTL
+     Hebrew text must not be reordered by the bidi algorithm. */
+  .ltr-isolate {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--cyan) 22%, transparent);
+    color: var(--foreground);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--foreground) 18%, transparent);
+    border-radius: 999px;
+    border: 2px solid var(--background);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--foreground) 30%, transparent);
+  }
+}
+
+@layer utilities {
+  /* Glass surface — used sparingly (Quick View, command bar). On the light
+     body this reads as a gentle frosted lift, not a dramatic effect. */
+  .glass-panel {
+    background: color-mix(in oklab, var(--card) 88%, transparent);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid var(--border);
+  }
+
+  /* Glow utilities, kept intentionally faint — this palette leans on soft
+     shadows for elevation, not colored light. Used only for the active/
+     selected state of a handful of controls. */
+  .glow-ring {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--cyan) 30%, transparent),
+      0 6px 16px -8px color-mix(in oklab, var(--cyan) 35%, transparent);
+  }
+  .glow-ring-sm {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--cyan) 25%, transparent),
+      0 4px 10px -5px color-mix(in oklab, var(--cyan) 30%, transparent);
+  }
+  .glow-teal {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--teal) 30%, transparent),
+      0 6px 14px -8px color-mix(in oklab, var(--teal) 32%, transparent);
+  }
+  .glow-destructive {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--destructive) 35%, transparent),
+      0 6px 14px -8px color-mix(in oklab, var(--destructive) 28%, transparent);
+  }
+  .glow-warning {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--warning) 35%, transparent),
+      0 6px 14px -8px color-mix(in oklab, var(--warning) 28%, transparent);
+  }
+  .glow-attention {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--attention) 35%, transparent),
+      0 6px 14px -8px color-mix(in oklab, var(--attention) 28%, transparent);
+  }
+
+  /* Calm elevation for cards that want a touch more lift than a border
+     alone — a soft, natural shadow rather than a glow. */
+  .shadow-soft {
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.1);
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(90deg, #0f766e 0%, #0e5c56 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* The light-mode gradient above is calibrated for a white card behind it
+     and reads too dark/low-contrast against a dark card — brightened here,
+     same teal family, still two-stop and still restrained (not neon, not
+     white). Plain CSS override rather than a `dark:` utility variant since
+     this is a hand-written class, not a Tailwind-generated one.
+     Deliberately overrides only `background-image` (a longhand), not the
+     `background` shorthand — the shorthand resets background-clip along
+     with everything else it doesn't mention, which silently turns the
+     clipped-text gradient into a solid box. */
+  .dark .text-gradient-brand {
+    background-image: linear-gradient(90deg, #4bcab8 0%, #34a696 100%);
+  }
+
+  /* Faint navigational grid — reserved for the dark header bar only now;
+     far too low-contrast to read on light surfaces, and the brief asks for
+     less texture/noise overall, so this is deliberately unused on the body. */
+  .bg-command-grid {
+    background-image:
+      linear-gradient(color-mix(in oklab, #ffffff 6%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, #ffffff 6%, transparent) 1px, transparent 1px);
+    background-size: 38px 38px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+  }
+
+  .bg-radar-glow {
+    background:
+      radial-gradient(circle at 85% 10%, color-mix(in oklab, var(--cyan) 6%, transparent), transparent 45%),
+      radial-gradient(circle at 10% 90%, color-mix(in oklab, var(--teal) 5%, transparent), transparent 50%);
+  }
+
+  .card-elevated {
+    background: linear-gradient(160deg, color-mix(in oklab, var(--surface) 100%, transparent), var(--card) 60%);
+    border: 1px solid var(--border);
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--destructive) 45%, transparent);
+    }
+    50% {
+      opacity: 0.75;
+      box-shadow: 0 0 0 5px color-mix(in oklab, var(--destructive) 0%, transparent);
+    }
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes sweep {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  .animate-sweep {
+    animation: sweep 3.5s ease-in-out infinite;
+  }
+}
